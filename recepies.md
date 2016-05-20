@@ -14,7 +14,7 @@ Step 1: Create Index.html
 				```
 				id="log"
 				```
-Step 2: Create promise.js
+</br>Step 2: Create promise.js
 	* Start the script with ```'use strict'``` (http://www.w3schools.com/js/js_strict.asp)
 	* Declare a promise count variable ```var promiseCount = 0```
 	* Declare the testPromise function ```function testPromise(){```
