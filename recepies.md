@@ -13,8 +13,7 @@ Step 1: Create Index.html
 			* Create a Span tag with the following attributes
 
 
----				
-## Step 2: Create promise.js
+Step 2: Create promise.js
 	* Start the script with ```'use strict'``` [(use strict)](http://www.w3schools.com/js/js_strict.asp)
 	* Declare a promise count variable ```var promiseCount = 0```
 	* Declare the testPromise function ```function testPromise(){```
