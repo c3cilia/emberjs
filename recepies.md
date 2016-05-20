@@ -17,7 +17,7 @@ Step 2: Create promise.js
 * Start the script with ```'use strict'``` [(use strict)](http://www.w3schools.com/js/js_strict.asp)
 * Declare a promise count variable ```var promiseCount = 0```
 * Declare the testPromise function ```function testPromise(){```
-	* declare a variable called thisPromiseCount that store promiseCount + 1
+	* declare a variable called ```thisPromiseCount``` that stores ```promiseCount + 1```
 					```var thisPromiseCount = ++promiseCount;```
 	* Get the element with id of log ```var log = document.getElementById("log");```
 	* log the start of the synchronous code by injecting this html into it using .insertAdjucentHtml() (https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML) ```log.insertAdjacentHTML("beforeend", thisPromiseCount + ') Started (<small>Sync Code started</small>)');```
