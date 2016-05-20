@@ -11,11 +11,11 @@ Step 1: Create Index.html
 			```
 		* Create a div ```<div>```
 			* Create a Span tag with the following attributes
-				```
-				id="log"
-				```
-</br>Step 2: Create promise.js
-	* Start the script with ```'use strict'``` (http://www.w3schools.com/js/js_strict.asp)
+
+
+---				
+## Step 2: Create promise.js
+	* Start the script with ```'use strict'``` [(use strict)](http://www.w3schools.com/js/js_strict.asp)
 	* Declare a promise count variable ```var promiseCount = 0```
 	* Declare the testPromise function ```function testPromise(){```
 		* declare a variable called thisPromiseCount that store promiseCount + 1
