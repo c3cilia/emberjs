@@ -20,7 +20,7 @@ Step 2: Create promise.js
 	* declare a variable called ```thisPromiseCount``` that stores ```promiseCount + 1```
 					```var thisPromiseCount = ++promiseCount;```
 	* Get the element with id of log ```var log = document.getElementById("log");```
-	* log the start of the synchronous code by injecting this html into it using .insertAdjucentHtml() (https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML) ```log.insertAdjacentHTML("beforeend", thisPromiseCount + ') Started (<small>Sync Code started</small>)');```
+	* log the start of the synchronous code by injecting this html into it using [.insertAdjucentHtml()](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML) ```log.insertAdjacentHTML("beforeend", thisPromiseCount + ') Started (<small>Sync Code started</small>)');```
 	* Create a new promise var p1 = new Promise(
 		* Create a fuction that takes a resolve and reject functions as arguments function(resolve, reject){
 			* log the begining of the promise i.e the asyc code ```log.insertAdjacentHTML('beforeend', thisPromiseCount + ') Promise started (<small>Asyn code started</small>)</br>');```
