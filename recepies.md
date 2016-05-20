@@ -1,4 +1,4 @@
->Blockquote
+
 WORKING WITH PROMISES </br>
 Step 1: Create Index.html 
 * Create HTML tag ```<html>```
@@ -11,7 +11,9 @@ Step 1: Create Index.html
 			onclick="testPromise()"
 			```
 		* Create a div ```<div>```
-			* Create a Span tag with the following attributes
+			* Create a Span tag with the following attributes ```
+				id="log"
+				```
 
 
 Step 2: Create promise.js
