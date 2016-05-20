@@ -1,3 +1,4 @@
+>Blockquote
 WORKING WITH PROMISES </br>
 Step 1: Create Index.html 
 * Create HTML tag ```<html>```
@@ -14,8 +15,7 @@ Step 1: Create Index.html
 
 
 Step 2: Create promise.js
-* Start the script with [(use strict)](http://www.w3schools.com/js/js_strict.asp)
-  > ```'use strict'``` 
+* Start the script with [(use strict)](http://www.w3schools.com/js/js_strict.asp) ```'use strict'``` 
 * Declare a promise count variable ```var promiseCount = 0```
 * Declare the testPromise function ```function testPromise(){```
 	* declare a variable called ```thisPromiseCount``` that stores ```promiseCount + 1```
