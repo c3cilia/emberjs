@@ -1,5 +1,4 @@
-
-WORKING WITH PROMISES </br>
+#### Example 1: WORKING WITH PROMISES </br>
 Step 1: Create Index.html 
 * Create HTML tag ```<html>```
 	* Create Head Tag ```<head>```
@@ -44,3 +43,7 @@ Step 2: Create promise.js
 			);```
 	* then log the finished synchronous code 
 			log.insertAdjacentHTML('beforeend', thisPromiseCount+ ') Promise made (<small>Sync code terminated</small>)</br>');
+
+
+#### Example 2: WORKING WITH PROMISES USING AN AJAX CALL 
+Step
