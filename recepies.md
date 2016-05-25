@@ -47,3 +47,5 @@ Step 2: Create promise.js
 
 #### Example 2: WORKING WITH PROMISES USING AN AJAX CALL 
 Step
+
+
