@@ -1,4 +1,4 @@
-#### Example 1: WORKING WITH PROMISES </br>
+#### Recipe 1: WORKING WITH PROMISES </br>
 Step 1: Create Index.html 
 * Create HTML tag ```<html>```
 	* Create Head Tag ```<head>```
@@ -45,7 +45,41 @@ Step 2: Create promise.js
 			log.insertAdjacentHTML('beforeend', thisPromiseCount+ ') Promise made (<small>Sync code terminated</small>)</br>');
 
 
-#### Example 2: WORKING WITH PROMISES USING AN AJAX CALL 
-Step
+#### Recipe 2: WORKING WITH PROMISES USING AN AJAX CALL 
+######Step 1: Create index.html
+* Create html tags ```<html>```
+	* Create the head tags ```<head>```
+		* Create script tags to get CORS1.js ```<script src="recepe2.js">```
+		* Create script tags to get jquery.js ```<script src="jquery.js">```
+	* Create the body tags ```<body>```
+		* Create a button that calls startCall() function when clicked ```<button onclick="startCall()"> ```
+		* Create a div with the id of output ```<div id="output">``` 
 
+######Step 2: Create recipe2.js
+* Create the function startCall() ```function startCall(){```
+	* Create a variable MdnApi and call an API endpoint ```var MdnAPI = 'http://localhost/emberjs/CORS/backend_api.php/'```
+	* Call a function GetMdnAPIData()  ```getMdnAPIData(MdnAPI);```
+* Create a function getMdnAPIData(uri){ ```function getMdnAPIData(uri){```
+	* Create an xhr varible ```var client = new XMLHttpRequest();```
+	* Create a promise ```var promise = new Promise(function (resolve, reject){```
+		* Open a request to the endpoint ```client.open('GET', uri, true);```
+		* Send the request ```client.send();```
+		* Onload of the response ```client.onload = function (){```
+			* If the status code is between 200 and 300 ```if (this.status >= 200 && this.status <= 300){```
+				* resolve the response ```resolve(this.reponse);```
+			* else 
+				* reject the response with the status text ```reject(this.statusText);```
+		* On error ```client.error = function(){```
+			* reject the response with the status text ```reject(this.statusText);```
+
+	* Then wait for promise ```promise.then(function(){```
+		* get the element with the id output ```var log = document.getElementById('output');```
+		* Displau the output of the request in the html document ```log.insertAdjacentHTML('beforeend', client.responseText);```  
+
+
+######Step 2: Create backend_api.js (endpoint)
+* Start the php tags ```<?php```
+	* Store the MDN endpoint url in a variable ```$url = 'https://developer.mozilla.org/en-US/search.json/';```
+	* get the content of the endpoint ```$json_content = file_get_contents($url);```
+	* then dump the content in the page ```exit($json_content); ```
 

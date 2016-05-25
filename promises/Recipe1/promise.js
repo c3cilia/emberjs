@@ -15,7 +15,6 @@ function testPromise(){
 				resolve(thisPromiseCount);
 			}, Math.random() * 2000 + 1000);
 	});
-	log.insertAdjacentHTML('beforeend', thisPromiseCount+ ') Promise made (<small>Sync code terminated</small>)</br>');
 
 	p1.then(
 		function(val){
@@ -26,4 +25,5 @@ function testPromise(){
 			console.log('Handle rejected promise ('+reason+') here.')
 		}
 	);
+	log.insertAdjacentHTML('beforeend', thisPromiseCount+ ') Promise made (<small>Sync code terminated</small>)</br>');
 }
