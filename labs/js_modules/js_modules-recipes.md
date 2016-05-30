@@ -20,4 +20,5 @@ Step 4: install the jspm modules
 Step 1: Setup a config.js 
 * Just run ```jspm init``` command from the terminal
 
-Step 2: install 'text, css, json' modules that let you use ES6 importing to bring CSS, JSON, and plain text strings into the scope of a module. ```jspm install text css json```  
+Step 2: install 'text, css, json' modules 
+* that let you use ES6 importing to bring CSS, JSON, and plain text strings into the scope of a module. ```jspm install text css json```  
