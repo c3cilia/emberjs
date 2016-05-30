@@ -3,6 +3,7 @@
 #### Setting up automatic update with browser sync module
 Step 1: Start an npm project
 ```npm init```
+
 Step 2: Install browser-sync npm package to help automate browser reloads. Its a dev dependency
 ```npm install browser-sync --save-dev```
 
