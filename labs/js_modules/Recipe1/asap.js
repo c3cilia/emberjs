@@ -1,6 +1,5 @@
 var asap;
-var isNode = typeof process !== "undefined" &&
-             {}.toString.call(process) === "[object process]";
+var isNode = typeof process !== "undefined" && {}.toString.call(process) === "[object process]";
 
 if (isNode) {
   asap = process.nextTick;
