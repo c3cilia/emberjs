@@ -1,0 +1,27 @@
+{
+  "name": "Recipe1",
+  "version": "1.0.0",
+  "description": "Recipe1",
+  "main": "index.js",
+  "scripts": {
+    "serveit": "browser-sync start --server --files '**/*'"
+  },
+  "author": "c3ssCoder",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "jspm": "^0.16.35"
+  },
+  "jspm": {
+    "dependencies": {
+      "css": "github:systemjs/plugin-css@^0.1.22",
+      "json": "github:systemjs/plugin-json@^0.1.2",
+      "text": "github:systemjs/plugin-text@^0.0.8"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
