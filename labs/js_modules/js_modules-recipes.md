@@ -4,8 +4,12 @@
 Step 1: Start an npm project
 ```npm init```
 
-Step 2: Install browser-sync npm package to help automate browser reloads. Its a dev dependency
+Step 2: Install browser-sync npm package to help automate browser reloads. 
+* Its a dev dependency
 ```npm install browser-sync --save-dev```
+*	In the package.json file add this ```"serveit": "browser-sync start --server --files '**/*'"``` under the scripts. This browser-sync to automatically track all files that are changing. 
+* Start browser-sync by running the command ```npm run serveit```	
+
 
 Step 3: Create an index.html file in the root directory of the npm package
 * Create an html tag ```<html>```
@@ -15,9 +19,6 @@ Step 3: Create an index.html file in the root directory of the npm package
 	* Create the body tag ```<body>```
 		* Start writing your code here
 
-Step 3: Starting browser
-*	In the package.json file add this ```"serveit": "browser-sync start --server --files '**/*'"``` under the scripts. This browser-sync to automatically track all files that are changing. 
-* Start browser-sync by running the command ```npm run serveit```	
 
 Step 4: install the jspm modules
 * Install jspm/jspm-cli as a global module  ```npm install jspm/jspm-cli -g```
