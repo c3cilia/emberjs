@@ -16,9 +16,10 @@
 var count = 30;
 
 // Syntax error
-let count = 40;```
+let count = 40;
+```
 
-*  no error is thrown if a let declaration creates a new variable with the same name as a variable in its containing scope, as demonstrated in the following code:
+* No error is thrown if a let declaration creates a new variable with the same name as a variable in its containing scope, as demonstrated in the following code:
 
 ```
 var count = 30;
