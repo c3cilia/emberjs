@@ -1,5 +1,5 @@
 ###Recipe 1: Creating the super rental app
-######Step 1: Create the a new ember app called super-rental
+####Step 1: Create the a new ember app called super-rental
 
 ```
 ember new super-rentals
@@ -19,7 +19,7 @@ A few folders are created Automatically.</br>
 
 Note: Ember users [ECMAScript 2015]() 
 
-######Step 2: Update the version of ember you are using 
+####Step 2: Update the version of ember you are using 
 
 * Change the versions of ember and ember data in ```bower.json```
 * Then 	do 
@@ -28,7 +28,7 @@ Note: Ember users [ECMAScript 2015]()
 bower install
 ```
 
-######STep 3: Start the evelopment server
+####STep 3: Start the evelopment server
 
 ```
 ember serve 
