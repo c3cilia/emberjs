@@ -69,6 +69,38 @@ AND building Ember applications.</p>
 
 Then go to ```http://localhost:4200/about``` to see your changes.
 
+####Step 7: Generate a contact route
+
+```
+ember g route contact
+```
+
+As usual this will generate a contact template, route handler and test file for the the route
+
+Then open the contact template ```app/templates/contact.hbs```
+Add some information about how to contact the person
+
+
+```
+<p>Super Rentals Representatives would love to help you choose a destination or answer
+any questions you may have.</p>
+
+<p>Contact us today:</p>
+
+<p>
+  Super Rentals HQ
+  <address>
+    1212 Test Address Avenue<br>
+    Testington, OR 97233
+  </address>
+</p>
+
+<p><a href="tel:503.555.1212">(503)555-1212</a></p>
+
+<p><a href="mailto:superrentalsrep@superrentals.com">superrentalsrep@superrentals.com</a></p>
+```
+
+
 
 
 ##[Project after all this research]().
