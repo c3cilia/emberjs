@@ -170,6 +170,18 @@ Add a link to the contact route
 {{#link-to 'contact us'}}Contact us {{/link-to}}
 ```
 
+The final code in ```app/templates/index.hbs``` should be like 
+
+```
+<h1>Welcome to super rentals</h1>
+
+<p>Hope you find what you are looking for in a place to stay</p>
+
+{{#link-to 'about'}}About us {{/link-to}}
+{{#link-to 'contact us'}}Contact us {{/link-to}}
+```
+
+
 
 
 
