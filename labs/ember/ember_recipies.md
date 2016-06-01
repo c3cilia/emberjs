@@ -104,7 +104,7 @@ Go to ```http://localhost:4200```
 
 ####Step 8: Add navigation link from about to contact
 Ember has built-in [helpers]() that help with linking to other routes. The helper is ```{{link-to}}```
-The ```link-to``` helper takes an argument which is the route that it is going to open.
+The [link-to]() helper takes an argument which is the route that it is going to open.
 
 ```
 <h2>About Super Rentals</h2>
@@ -167,7 +167,7 @@ Add a link to the about route
 Add a link to the contact route 
 
 ```
-{{#link-to 'contact us'}}Contact us {{/link-to}}
+{{#link-to 'contact'}}Contact us {{/link-to}}
 ```
 
 The final code in ```app/templates/index.hbs``` should be like 
@@ -178,7 +178,123 @@ The final code in ```app/templates/index.hbs``` should be like
 <p>Hope you find what you are looking for in a place to stay</p>
 
 {{#link-to 'about'}}About us {{/link-to}}
-{{#link-to 'contact us'}}Contact us {{/link-to}}
+{{#link-to 'contact'}}Contact us {{/link-to}}
+```
+
+
+####Step 12: Add some dummy model data in index.js route
+In ember the route handers are resposible for loading model data. Since we want data about the rentals to be on the front page we will therefore use the index route. The data is an array of objects
+
+Open ```app/routes/index.js``` route handler
+
+Add the dummy Data
+
+```
+var rentals = [{
+  id: 1,
+  title: 'Grand Old Mansion',
+  owner: 'Veruca Salt',
+  city: 'San Francisco',
+  type: 'Estate',
+  bedrooms: 15,
+  image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg'
+}, {
+  id: 2,
+  title: 'Urban Living',
+  owner: 'Mike TV',
+  city: 'Seattle',
+  type: 'Condo',
+  bedrooms: 1,
+  image: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Alfonso_13_Highrise_Tegucigalpa.jpg'
+}, {
+  id: 3,
+  title: 'Downtown Charm',
+  owner: 'Violet Beauregarde',
+  city: 'Portland',
+  type: 'Apartment',
+  bedrooms: 3,
+  image: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg'
+}];
+```
+
+Then add the model function. We are using [ES6 shorthand for functions](). The model function is a [hook]() that will be called when the user open the index route is called or opened by the user. The model hook return the rentals array and that is passed to the index template.
+
+```
+model(){
+  return rentals;
+}
+```
+
+The final code for ```app/routes/index.js``` should be
+
+```
+import Ember from 'ember';
+
+var rentals = [{
+  id: 1,
+  title: 'Grand Old Mansion',
+  owner: 'Veruca Salt',
+  city: 'San Francisco',
+  type: 'Estate',
+  bedrooms: 15,
+  image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg'
+}, {
+  id: 2,
+  title: 'Urban Living',
+  owner: 'Mike TV',
+  city: 'Seattle',
+  type: 'Condo',
+  bedrooms: 1,
+  image: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Alfonso_13_Highrise_Tegucigalpa.jpg'
+}, {
+  id: 3,
+  title: 'Downtown Charm',
+  owner: 'Violet Beauregarde',
+  city: 'Portland',
+  type: 'Apartment',
+  bedrooms: 3,
+  image: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg'
+}];
+
+export default Ember.Route.extend({
+  model (){
+    return rentals;
+  },
+
+});
+```
+
+####Step 13: Make data from the route handler appear in the template for viewing
+Open ```app/templates/index.hbs``` template. Iterate through the rentals using the ```{{each}}``` helper. [each helper]().
+
+```
+{{#each model as |rental|}}
+  <h2>{{rental.title}}</h2>
+  <p>Owner: {{rental.owner}}</p>
+  <p>Type: {{rental.type}}</p>
+  <p>Location: {{rental.city}}</p>
+  <p>Number of bedrooms{{rental.bedrooms}}</p>
+  <img src="{{rental.image}}"/>
+{{/each}}
+```
+
+The final code for ```app/templates/index.hbs``` should be  
+
+```
+<h1>Welcome to super rentals</h1>
+
+<p>Hope you find what you are looking for in a place to stay</p>
+
+{{#each model as |rental|}} //[|rental|]()
+  <h2>{{rental.title}}</h2>
+  <p>Owner: {{rental.owner}}</p>
+  <p>Type: {{rental.type}}</p>
+  <p>Location: {{rental.city}}</p>
+  <p>Number of bedrooms{{rental.bedrooms}}</p>
+  <img src="{{rental.image}}"/>
+{{/each}}
+{{#link-to 'about'}}About us {{/link-to}}
+{{#link-to 'contact'}}Contact us {{/link-to}}
 ```
 
 
