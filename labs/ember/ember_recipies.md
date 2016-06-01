@@ -7,7 +7,7 @@ ember new super-rentals
 
 A few folders are created Automatically.</br>
 * App --> contains [models](), [components](), [routes](), [templates](), styles etc.
-* bower_components --> [Bower]() is a dependency management tool. In ember CLI it manages HTML, CSS and JS
+* bower_components --> [Bower]() is a dependency management tool. In [Ember CLI]() it manages HTML, CSS and JS. You can add others like [Bootstrap](). [What is the difference between Ember and Ember data]()
 * config --> configuration settings for the entire app
 * dist --> contains built files for deployment
 * node_modules --> Ember is built with [node]() and this makes is sort of important.
@@ -19,25 +19,22 @@ A few folders are created Automatically.</br>
 
 Note: Ember users [ECMAScript 2015]() 
 
-######Step 2: 
+######Step 2: Update the version of ember you are using 
 
+* Change the versions of ember and ember data in ```bower.json```
+* Then 	do 
 
+```
+bower install
+```
 
+######STep 3: Start the evelopment server
 
-#####List of things that are ember specific that I don't get
-* Ember.Router.extend()
-* Mixins 
+```
+ember serve 
+```
 
-#####List of things to checkout later and things I don't get 
-*Bower
-* Ember CLI
-* What is the difference between Ember and Ember data
-* QUnit 
-* Bootstrap
-* Ember CLI test runner testem
-* Building our app??
-* ES6 Modules	
-* 
+open it at ```http://localhost:4200```.
 
 ##Project after all this research.
 An application where a user can use maps to track 
