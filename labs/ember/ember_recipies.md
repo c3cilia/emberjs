@@ -102,6 +102,81 @@ any questions you may have.</p>
 
 Go to ```http://localhost:4200```
 
+####Step 8: Add navigation link from about to contact
+Ember has built-in [helpers]() that help with linking to other routes. The helper is ```{{link-to}}```
+The ```link-to``` helper takes an argument which is the route that it is going to open.
+
+```
+<h2>About Super Rentals</h2>
+
+<p>The Super Rentals website is a delightful project created to explore Ember.<br>
+  By building a property rental site, we can simultaneously imagine traveling<br>
+  AND building Ember applications.</p>
+
+{{#link-to "contact"}}Click here to contact us.{{/link-to}}
+```
+
+####Step 9: Add navigation link from contact to about
+
+```
+<p>Super Rentals Representatives would love to help you choose a destination or answer
+any questions you may have.</p>
+
+<p>Contact us today:</p>
+
+<p>
+  Super Rentals HQ
+  <address>
+    1212 Test Address Avenue<br>
+    Testington, OR 97233
+  </address>
+</p>
+
+<p><a href="tel:503.555.1212">(503)555-1212</a></p>
+
+<p><a href="mailto:superrentalsrep@superrentals.com">superrentalsrep@superrentals.com</a></p>
+
+{{#link-to 'about'}}About us{{/link}}
+```
+
+####STep 10: Generate the index route
+
+```
+ember g route index
+```
+
+This again generate the index template, route handeler and test file.
+
+The index route is special. It does not require an entry in the routers mapping. The reason will be clear when you learn about [nested routes]()
+
+####Step 11: Fill the index template with some data
+Start with a H1 for the heading
+
+```<h1>Welcome to super rentals</h1>```
+
+Then add a simple p tag
+
+```<p>Hope you find what you are looking for in a place to stay</p>```
+
+Add a link to the about route 
+
+```
+{{#link-to 'about'}}About us {{/link-to}}
+```
+
+Add a link to the contact route 
+
+```
+{{#link-to 'contact us'}}Contact us {{/link-to}}
+```
+
+
+
+
+
+
+
+
 
 
 ##[Project after all this research]().
