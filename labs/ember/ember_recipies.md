@@ -598,7 +598,11 @@ Create an input field using the [input helper]() ```{{input}}```.
 
 ```
 City: {{input value=filter key-up=(action 'autoComplete')}} 
-``` 
+```
+
+
+
+ 
 
 
 
@@ -620,6 +624,24 @@ City: {{input value=filter key-up=(action 'autoComplete')}}
 
 How many hours do programmer spend a day programming?
 
+
+####1.1) [Ember.js - Models: Introduction](https://guides.emberjs.com/v2.5.0/models/)
+[Adapater pattern](https://en.wikipedia.org/wiki/Adapter_pattern) 
+[streaming servers]()
+[SOLID principles](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
+
+####2) [Learning something in 20 hours](https://www.youtube.com/watch?v=EtJy69cEOtQ)
+- What is it going to look like when you are done? What is the outcome of this learning? Define the outcome. 
+- Deconstruct the skill into small chunks
+- Research just enough that you are able to identify the most important sub-skills in whatever you want to learn how to do.
+
+
+####3) Saka
+Make the banner for the landing page
+  - Design an image 
+  - Make the image appear in the frontend
+    - Get the core concepts about the front end
+  - Style the image 
 
 
 
