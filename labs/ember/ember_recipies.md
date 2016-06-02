@@ -285,7 +285,7 @@ The final code for ```app/templates/index.hbs``` should be
 
 <p>Hope you find what you are looking for in a place to stay</p>
 
-{{#each model as |rental|}} //[|rental|]()
+{{#each model as |rental|}} 
   <h2>{{rental.title}}</h2>
   <p>Owner: {{rental.owner}}</p>
   <p>Type: {{rental.type}}</p>
@@ -297,6 +297,308 @@ The final code for ```app/templates/index.hbs``` should be
 {{#link-to 'contact'}}Contact us {{/link-to}}
 ```
 
+[|rental|]() - is this like how we define variables in a template or what?
+[#each]() - look more into this.
+
+####Step 14: Generate Ember Data model
+The [Ember Data]() model is the data management library
+
+```
+ember g model rental
+```
+
+This generate rental model ```app/models/rental.js``` and a test file for it ```tests/unit/models/rental-test.js```
+
+####Step 15: Add some models in the rental model
+open ```app/models/rental.js```
+
+Define how the rental data model
+
+```
+{
+  title: DS.attr('string'),
+  ownwer: DS.attr('string'),
+  city: DS.attr('string'),
+  type: DS.attr('string'),
+  image: DS.attr('string'),
+  bedrooms: DS.attr('number'),
+}
+```
+
+The final code for ```app/models/rental.js``` should be 
+
+```
+import DS from 'ember-data';
+
+export default DS.Model.extend({
+  title: DS.attr('string'),
+  ownwer: DS.attr('string'),
+  city: DS.attr('string'),
+  type: DS.attr('string'),
+  image: DS.attr('string'),
+  bedrooms: DS.attr('number'),
+});
+```
+
+[DS]()
+[ember-data]()
+[DS.Model.extend]() 
+[export default]()
+
+####Step 16: Use mirage as the backend
+First you need to install [mirage]()
+
+```ember install ember-cli-mirage```
+
+Then restart the ember server
+
+```ember serve```
+
+
+####Step 17: Configure mirage to send data to the rentals model
+Open ```app/mirage/config.js```
+
+```
+export default function(){
+  this.get('/rentals', function(){
+    return {
+      data: [
+        {
+          type: 'rentals',
+          id: 1,
+          attributes: {
+            title: 'Grand Old Mansion',
+            owner: 'Veruca Salt',
+            city: 'San Francisco',
+            type: 'Estate',
+            bedrooms: 15,
+            image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg'
+          }
+        },
+        {
+          type: 'rentals',
+          id: 2,
+          attributes: {
+            title: 'Urban Living',
+            owner: 'Mike Teavee',
+            city: 'Seattle',
+            type: 'Condo',
+            bedrooms: 1,
+            image: 'https://upload.wikimedia.org/wikipedia/commons/0/0e/Alfonso_13_Highrise_Tegucigalpa.jpg'
+          }
+        },
+        {
+          type: 'rentals',
+          id: 3,
+          attributes: {
+            title: 'Downtown Charm',
+            owner: 'Violet Beauregarde',
+            city: 'Portland',
+            type: 'Apartment',
+            bedrooms: 3,
+            image: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Wheeldon_Apartment_Building_-_Portland_Oregon.jpg'
+          }
+        } 
+      ]
+    };
+  });
+}
+
+```
+
+[this.get('/rentals', function(){})]()
+
+####Step 18: Update the index route to get all the data from mirage
+First remove the object that had all the data then add this
+
+```
+
+export default Ember.Route.extend({
+  model (){
+    return this.store.findAll('rental');
+  },
+
+});
+```
+
+[this.store.findAll('rental');]()
+
+####Step 19: Add ability to hde and show an image for each rental
+We will use a [component]() for this. Component names must have a dash in between. First lets generate the ```rental-listing``` component 
+
+```
+ember g component rental-listing
+```
+
+Just like the route this will generate a component hander ```app/components/rental-listing.js``` a component [handlebars]() template ```app/templates/components/rental-listing.hbs``` and a test file for the component ```tests/integration/components/rental-listing-test.js```
+
+####Step 20: Move rental display from index route to the rental-listing component 
+
+The ```app/templates/index.hbs``` should now be like this
+
+```
+<h1>Welcome to super rentals</h1>
+
+<p>Hope you find what you are looking for in a place to stay</p>
+
+{{#each model as |rentalUnit|}}
+  {{rental-listing rental=rentalUnit}}
+{{/each}}
+{{#link-to 'about'}}About us {{/link-to}}
+{{#link-to 'contact'}}Contact us {{/link-to}}
+```
+
+move the code to ```app/templates/components/rental-listing.hbs``` which should now look like this
+
+```
+<h2>{{rental.title}}</h2>
+  <p>Owner: {{rental.owner}}</p>
+  <p>Type: {{rental.type}}</p>
+  <p>Location: {{rental.city}}</p>
+  <p>Number of bedrooms{{rental.bedrooms}}</p>
+  <img src="{{rental.image}}"/>
+```
+
+####Step 21: Hiding and showing images
+First introduce the ```{{if}}``` helper to check if ```isImageShowing``` is set to true or false.
+If it is true show the image and a  "Hide image" button else just show the "Show image" button. ```isImageShowing``` comes from the components handler.
+
+```
+{{#if isImageShowing}}
+    <img src="{{rental.image}}"/>
+    <button>Hide image</button>
+  {{else}}
+    <button>Show image</button>
+  {{/if}}
+```
+
+The whole code for ```app/templates/components/rental-listing.hbs``` should be like 
+
+```
+<h2>{{rental.title}}</h2>
+  <p>Owner: {{rental.owner}}</p>
+  <p>Type: {{rental.type}}</p>
+  <p>Location: {{rental.city}}</p>
+  <p>Number of bedrooms{{rental.bedrooms}}</p>
+
+  {{#if isImageShowing}}
+    <img src="{{rental.image}}"/>
+    <button>Hide image</button>
+  {{else}}
+    <button>Show image</button>
+  {{/if}}
+```
+
+####Step 22: Add isImageShowing in the rental-listing component handler
+
+```
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  isImageShowing: false,
+});
+```
+
+[Ember.Component.extend]()
+
+####Step 23: Add an "showImage" action to the "Show image" button
+
+```<button {{action "imageShow"}}>Show image</button>```
+
+####Step 24: Handle the action in the  ```app/components/rental-listing.js```
+
+```
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  isImageShowing: false,
+  actions: {
+    imageShow(){
+      this.set('isImageShowing', true);
+    },
+  }
+});
+```
+
+[this.set('isImageShowing', true);]()
+
+####Step 25: Add a "hideImage" action to the "Hide image" button
+
+```
+<button {{action "imageHide"}}>Hide image</button>
+```
+
+####Step 26: Handle the "imageHide" action in the components handle 
+
+```
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  isImageShowing: false,
+  actions: {
+    imageShow(){
+      this.set('isImageShowing', true);
+    },
+    imageHide(){
+      this.set('isImageShowing', false);
+    }
+  }
+});
+```
+
+####Step 27: Manipulate the data so that the user sees if the property is standalone or communial
+We will use the [handlebars helpers](). 
+
+So first generate the helper
+
+```
+ember g helper rental-property-type
+```
+
+This generates a rental-property-type helper ```app/helpers/rental-property-type``` and its test file ```tests/unit/helpers/rental-property-type-test.js```
+
+#####Step 28: Update the rental-listing component template to use the rental-property-type helper
+
+```
+<p>Type: {{rental-property-type rental.type}} - {{rental.type}}</p>
+```
+
+####Step 29: Update the ```app/helpers/rental-property-type``` 
+To check if the the property is "Standalone" or "community". We are using [ES2015 destructuring]() to get the first item in the array and name it ```type```.
+
+```
+import Ember from 'ember';
+
+const communityPropertyTypes = [
+  'Condo',
+  'Townhouse',
+  'Appartment'
+]
+export function rentalPropertyType([type]) {
+  if (communityPropertyTypes.contains(type)){
+    return 'Community';
+  }
+  return 'Standalone';
+}
+
+export default Ember.Helper.helper(rentalPropertyType);
+```
+[communityPropertyTypes.contains(type)]()
+[export function rentalPropertyType([type])]()
+
+
+####Step 30: Generate a search component
+
+```
+ember g component filter-listing
+```
+
+####Step 31: In the filter-listing template 
+Create an input field using the [input helper]() ```{{input}}```.
+
+```
+City: {{input value=filter key-up=(action 'autoComplete')}} 
+``` 
 
 
 
@@ -307,8 +609,27 @@ The final code for ```app/templates/index.hbs``` should be
 
 
 
-##[Project after all this research]().
-An application where a user can use maps to track 
-* A shop they want with the thing they want
+
+
+
+
+
+
+
+
+
+How many hours do programmer spend a day programming?
+
+
+
+
+
+
+
+
+
+
+
+
 
 
