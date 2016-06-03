@@ -637,11 +637,23 @@ How many hours do programmer spend a day programming?
 
 
 ####3) Saka
-Make the banner for the landing page
+1) Make page with a map
+**Skim through [ember-leaflet docs](http://www.ember-leaflet.com/docs)
+* raster and vector data.
+* [templates, actions, routing, and above all, expressiveness.]()
+* [ For production builds, update ember-cli's fingerprinting exclusion](http://codesandnotes.com/ember-js/exluding-favicons-from-ember-cli-fingerprinting/)
+
+2)Make the banner for the landing page
   - Design an image 
   - Make the image appear in the frontend
     - Get the core concepts about the front end
   - Style the image 
+
+3) take screen shots of the maps and make a panning image from top to bottom
+
+####Future ideas for saka
+How to know how much data is being downloaded
+
 
 
 
